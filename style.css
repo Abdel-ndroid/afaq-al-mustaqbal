@@ -1,0 +1,464 @@
+/* =========================================================
+   AFAQ AL MUSTAQBAL
+   Simple Landing Page
+   ========================================================= */
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Tahoma",
+        "Arial",
+        sans-serif;
+
+    background: #f5f8fa;
+
+    color: #17202a;
+
+    line-height: 1.6;
+}
+
+
+
+.page {
+    width: 100%;
+    max-width: 520px;
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding: 42px 20px 28px;
+
+    background: #ffffff;
+}
+
+
+
+.header {
+    text-align: center;
+
+    margin-bottom: 32px;
+}
+
+
+.logo {
+    width: 125px;
+    height: 125px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 18px;
+}
+
+
+.header h1 {
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: #0B4F8A;
+
+    line-height: 1.5;
+
+    margin-bottom: 3px;
+}
+
+
+.english-name {
+    direction: ltr;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: #58A93D;
+
+    margin-bottom: 13px;
+}
+
+
+.slogan {
+    font-size: 15px;
+
+    color: #5d6872;
+
+    font-weight: 500;
+}
+
+
+
+.contact-section {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 34px;
+}
+
+
+.contact-button {
+    min-height: 64px;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 15px;
+
+    padding: 12px 18px;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.07);
+}
+
+
+.contact-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.11);
+}
+
+
+.contact-button:active {
+    transform: scale(0.98);
+}
+
+
+.button-icon {
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    font-size: 21px;
+}
+
+
+.contact-button strong {
+    display: block;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.contact-button small {
+    display: block;
+
+    font-size: 12px;
+
+    margin-top: 1px;
+
+    opacity: 0.88;
+}
+
+
+/* WhatsApp */
+
+.whatsapp {
+    background: #0B4F8A;
+
+    color: #ffffff;
+}
+
+
+/* Phone */
+
+.phone {
+    background: #58A93D;
+
+    color: #ffffff;
+}
+
+
+
+.social-section h2,
+.activities h2 {
+    text-align: center;
+
+    font-size: 17px;
+
+    color: #0B4F8A;
+
+    margin-bottom: 14px;
+
+    font-weight: 700;
+}
+
+
+
+.social-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 11px;
+
+    margin-bottom: 34px;
+}
+
+
+.social-button {
+    min-height: 72px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid #e3e9ee;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    text-decoration: none;
+
+    color: #17202a;
+
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+
+.social-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+
+.social-button span {
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.social-button small {
+    font-size: 11px;
+
+    color: #68737d;
+
+    margin-top: 2px;
+}
+
+
+.facebook {
+    border-top: 3px solid #0B4F8A;
+}
+
+
+.instagram {
+    border-top: 3px solid #58A93D;
+}
+
+
+
+.activities {
+    padding-top: 2px;
+
+    margin-bottom: 30px;
+}
+
+
+.activity-list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+
+.activity {
+    min-height: 50px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 8px;
+
+    background: #f5f8fa;
+
+    border-radius: 10px;
+
+    border: 1px solid #edf1f4;
+
+    color: #34404a;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+
+.location {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 14px;
+
+    border-top: 1px solid #edf0f2;
+
+    border-bottom: 1px solid #edf0f2;
+
+    margin-bottom: 20px;
+}
+
+
+.location-icon {
+    font-size: 17px;
+}
+
+
+.location p {
+    font-size: 13px;
+
+    color: #5d6872;
+
+    margin: 0;
+}
+
+
+
+footer {
+    text-align: center;
+
+    color: #7a858e;
+}
+
+
+footer p {
+    font-size: 12px;
+
+    font-weight: 600;
+
+    margin-bottom: 3px;
+}
+
+
+footer span {
+    font-size: 10px;
+}
+
+
+
+@media (max-width: 380px) {
+
+    .page {
+        padding: 32px 15px 22px;
+    }
+
+
+    .logo {
+        width: 105px;
+
+        height: 105px;
+    }
+
+
+    .header h1 {
+        font-size: 21px;
+    }
+
+
+    .slogan {
+        font-size: 14px;
+    }
+
+
+    .contact-button {
+        min-height: 60px;
+
+        padding: 10px 14px;
+    }
+
+
+    .contact-button strong {
+        font-size: 15px;
+    }
+
+
+    .activity-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        scroll-behavior: auto !important;
+
+        transition: none !important;
+    }
+
+}
