@@ -1,9 +1,18 @@
 /* =========================================================
-   AFAQ AL MUSTAQBAL
-   Simple Landing Page
+   AFAQ AL MUSTAQBAL - Futuristic Glassmorphism UI
    ========================================================= */
 
-
+:root {
+    --bg-dark: #070c14;
+    --card-bg: rgba(13, 22, 38, 0.65);
+    --card-border: rgba(0, 229, 255, 0.18);
+    --primary-blue: #00e5ff;
+    --primary-green: #00ff88;
+    --text-main: #f0f6fc;
+    --text-muted: #8b949e;
+    --font-ar: 'Tajawal', 'Tahoma', sans-serif;
+    --font-en: 'Orbitron', sans-serif;
+}
 
 * {
     margin: 0;
@@ -11,454 +20,390 @@
     box-sizing: border-box;
 }
 
-
-
 html {
     scroll-behavior: smooth;
 }
 
 body {
     min-height: 100vh;
-
-    font-family:
-        "Tahoma",
-        "Arial",
-        sans-serif;
-
-    background: #f5f8fa;
-
-    color: #17202a;
-
+    font-family: var(--font-ar);
+    background-color: var(--bg-dark);
+    background-image: 
+        radial-gradient(circle at 10% 10%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(0, 255, 136, 0.08) 0%, transparent 40%);
+    color: var(--text-main);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-
+/* Background Canvas */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
 
 .page {
+    position: relative;
+    z-index: 1;
     width: 100%;
-    max-width: 520px;
-
+    max-width: 480px;
     min-height: 100vh;
-
     margin: 0 auto;
-
-    padding: 42px 20px 28px;
-
-    background: #ffffff;
+    padding: 36px 20px 28px;
+    animation: fadeIn 0.8s ease-out;
 }
 
-
-
+/* ================= Header ================= */
 .header {
     text-align: center;
-
     margin-bottom: 32px;
 }
 
+.logo-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+}
+
+.logo-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+    filter: blur(20px);
+    opacity: 0.5;
+    animation: pulse 3s infinite alternate;
+}
 
 .logo {
-    width: 125px;
-    height: 125px;
-
+    position: relative;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-
-    display: block;
-
-    margin: 0 auto 18px;
+    border-radius: 50%;
+    border: 2px solid var(--card-border);
+    background: var(--bg-dark);
+    padding: 6px;
+    backdrop-filter: blur(10px);
 }
-
 
 .header h1 {
-    font-size: 24px;
-
-    font-weight: 700;
-
-    color: #0B4F8A;
-
-    line-height: 1.5;
-
-    margin-bottom: 3px;
+    font-size: 22px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 30%, var(--primary-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.4;
+    margin-bottom: 4px;
 }
-
 
 .english-name {
     direction: ltr;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    color: #58A93D;
-
-    margin-bottom: 13px;
+    font-family: var(--font-en);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: var(--primary-green);
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.4);
+    margin-bottom: 12px;
 }
-
 
 .slogan {
-    font-size: 15px;
-
-    color: #5d6872;
-
+    font-size: 14px;
+    color: var(--text-muted);
     font-weight: 500;
+    display: inline-block;
+    padding: 4px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-
-
+/* ================= Contact Buttons ================= */
 .contact-section {
     display: flex;
-
     flex-direction: column;
-
-    gap: 12px;
-
-    margin-bottom: 34px;
+    gap: 14px;
+    margin-bottom: 32px;
 }
-
 
 .contact-button {
+    position: relative;
     min-height: 64px;
-
     width: 100%;
-
     display: flex;
-
     align-items: center;
-
-    justify-content: flex-start;
-
-    gap: 15px;
-
+    justify-content: space-between;
     padding: 12px 18px;
-
-    border-radius: 15px;
-
+    border-radius: 16px;
     text-decoration: none;
-
-    transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease;
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.07);
+    color: var(--text-main);
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+.contact-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-button.whatsapp::before {
+    background: linear-gradient(90deg, rgba(0, 229, 255, 0.15), transparent);
+}
+
+.contact-button.phone::before {
+    background: linear-gradient(90deg, rgba(0, 255, 136, 0.15), transparent);
+}
 
 .contact-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.11);
+    transform: translateY(-3px) scale(1.01);
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: 0 10px 25px -5px rgba(0, 229, 255, 0.25);
 }
 
-
-.contact-button:active {
-    transform: scale(0.98);
+.contact-button:hover::before {
+    opacity: 1;
 }
-
 
 .button-icon {
-    width: 40px;
-
-    height: 40px;
-
+    width: 42px;
+    height: 42px;
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.18);
-
-    font-size: 21px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.whatsapp .button-icon { stroke: var(--primary-blue); stroke-width: 2; }
+.phone .button-icon { stroke: var(--primary-green); stroke-width: 2; }
 
-.contact-button strong {
+.button-text {
+    flex-grow: 1;
+    margin: 0 14px;
+}
+
+.button-text strong {
     display: block;
-
-    font-size: 16px;
-
+    font-size: 15px;
     font-weight: 700;
 }
 
-
-.contact-button small {
+.button-text small {
     display: block;
-
     font-size: 12px;
-
-    margin-top: 1px;
-
-    opacity: 0.88;
+    color: var(--text-muted);
+    font-family: var(--font-en);
+    direction: ltr;
+    text-align: right;
 }
 
-
-/* WhatsApp */
-
-.whatsapp {
-    background: #0B4F8A;
-
-    color: #ffffff;
+.button-arrow {
+    font-size: 18px;
+    color: var(--text-muted);
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-
-/* Phone */
-
-.phone {
-    background: #58A93D;
-
-    color: #ffffff;
+.contact-button:hover .button-arrow {
+    transform: translateX(-5px);
+    color: var(--primary-blue);
 }
 
-
-
+/* ================= Social Media ================= */
 .social-section h2,
 .activities h2 {
     text-align: center;
-
-    font-size: 17px;
-
-    color: #0B4F8A;
-
-    margin-bottom: 14px;
-
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
     font-weight: 700;
+    position: relative;
 }
 
-
+.social-section h2 span,
+.activities h2 span {
+    background: var(--bg-dark);
+    padding: 0 12px;
+    position: relative;
+    z-index: 1;
+}
 
 .social-buttons {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
-    gap: 11px;
-
-    margin-bottom: 34px;
+    gap: 12px;
+    margin-bottom: 32px;
 }
-
 
 .social-button {
-    min-height: 72px;
-
+    min-height: 80px;
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
-
-    border: 1px solid #e3e9ee;
-
-    border-radius: 14px;
-
-    background: #ffffff;
-
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
     text-decoration: none;
-
-    color: #17202a;
-
-    transition:
-        transform 0.18s ease,
-        border-color 0.18s ease,
-        box-shadow 0.18s ease;
+    color: var(--text-main);
+    transition: all 0.3s ease;
 }
-
 
 .social-button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 6px 18px rgba(0, 0, 0, 0.07);
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
+.social-button.facebook:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 8px 20px -5px rgba(0, 229, 255, 0.3);
+}
 
-.social-button span {
-    font-size: 15px;
+.social-button.instagram:hover {
+    border-color: var(--primary-green);
+    box-shadow: 0 8px 20px -5px rgba(0, 255, 136, 0.3);
+}
 
+.social-icon {
+    margin-bottom: 4px;
+    color: var(--primary-blue);
+}
+
+.instagram .social-icon {
+    color: var(--primary-green);
+}
+
+.social-button span:not(.social-icon) {
+    font-size: 14px;
     font-weight: 700;
 }
 
-
 .social-button small {
     font-size: 11px;
-
-    color: #68737d;
-
-    margin-top: 2px;
+    color: var(--text-muted);
 }
 
-
-.facebook {
-    border-top: 3px solid #0B4F8A;
-}
-
-
-.instagram {
-    border-top: 3px solid #58A93D;
-}
-
-
-
+/* ================= Activities ================= */
 .activities {
-    padding-top: 2px;
-
     margin-bottom: 30px;
 }
 
-
 .activity-list {
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
-    gap: 9px;
+    gap: 10px;
 }
-
 
 .activity {
-    min-height: 50px;
-
+    position: relative;
+    min-height: 54px;
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
     text-align: center;
-
-    padding: 8px;
-
-    background: #f5f8fa;
-
-    border-radius: 10px;
-
-    border: 1px solid #edf1f4;
-
-    color: #34404a;
-
+    padding: 10px 12px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    color: var(--text-main);
     font-size: 13px;
-
     font-weight: 600;
+    transition: all 0.3s ease;
 }
 
+.activity:hover {
+    border-color: rgba(0, 229, 255, 0.4);
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
 
-
+/* ================= Location ================= */
 .location {
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
-    gap: 7px;
-
+    gap: 8px;
     padding: 14px;
-
-    border-top: 1px solid #edf0f2;
-
-    border-bottom: 1px solid #edf0f2;
-
-    margin-bottom: 20px;
+    background: var(--card-bg);
+    border-radius: 14px;
+    border: 1px solid var(--card-border);
+    margin-bottom: 24px;
 }
-
 
 .location-icon {
-    font-size: 17px;
+    font-size: 16px;
 }
-
 
 .location p {
     font-size: 13px;
-
-    color: #5d6872;
-
-    margin: 0;
+    color: var(--text-muted);
 }
 
-
-
+/* ================= Footer ================= */
 footer {
     text-align: center;
-
-    color: #7a858e;
+    color: var(--text-muted);
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
-
 
 footer p {
     font-size: 12px;
-
-    font-weight: 600;
-
-    margin-bottom: 3px;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 2px;
 }
-
 
 footer span {
-    font-size: 10px;
+    font-family: var(--font-en);
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
 }
 
-
-
-@media (max-width: 380px) {
-
-    .page {
-        padding: 32px 15px 22px;
+/* ================= Keyframes ================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
-
-
-    .logo {
-        width: 105px;
-
-        height: 105px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-
-
-    .header h1 {
-        font-size: 21px;
-    }
-
-
-    .slogan {
-        font-size: 14px;
-    }
-
-
-    .contact-button {
-        min-height: 60px;
-
-        padding: 10px 14px;
-    }
-
-
-    .contact-button strong {
-        font-size: 15px;
-    }
-
-
-    .activity-list {
-        grid-template-columns: 1fr;
-    }
-
 }
 
+@keyframes pulse {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1.05);
+    }
+}
 
-
+/* Reduced Motion Preference */
 @media (prefers-reduced-motion: reduce) {
-
     * {
-        scroll-behavior: auto !important;
-
+        animation: none !important;
         transition: none !important;
     }
-
 }
